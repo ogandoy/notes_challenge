@@ -36,6 +36,7 @@ gem "bootsnap", require: false
 # Views and Templates
 gem "haml-rails", "~> 2.0"
 gem 'html2haml', '~> 2.3'
+gem "tailwindcss-rails", "~> 3.0"
 
 # Authentication and Authorization
 gem "devise", "~> 4.9"

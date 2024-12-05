@@ -1,0 +1,10 @@
+%div.min-h-screen.bg-gray-100.flex.items-center.justify-center
+  %div.text-center.bg-white.shadow-lg.rounded-lg.p-8.max-w-md
+    %h1.text-4xl.font-extrabold.text-gray-800.mb-4 QuickNotes
+    %p.text-lg.text-gray-600.mb-6 Your personal note-taking app with role-based access.
+    %p.mt-4.text-gray-500
+      Already have an account?
+      = link_to 'Sign in here', new_user_session_path, class: 'text-blue-500 hover:text-blue-600'
+    %p.mt-4.text-gray-500
+      Don't have an account?
+      = link_to 'Sign up here', new_user_registration_path, class: 'text-blue-500 hover:text-blue-600'

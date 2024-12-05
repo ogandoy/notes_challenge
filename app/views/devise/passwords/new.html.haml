@@ -1,10 +1,14 @@
-%h2 Forgot your password?
-= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
-  = render "devise/shared/error_messages", resource: resource
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .actions
-    = f.submit "Send me reset password instructions"
-= render "devise/shared/links"
+%div.min-h-screen.bg-gray-100.flex.items-center.justify-center
+  %div.text-center.bg-white.shadow-lg.rounded-lg.p-8.max-w-md
+    %div.mb-6
+      = link_to image_tag("notes-logo.svg", alt: "Logo", class: "h-16 mx-auto"), root_path
+    %h1.text-3xl.font-extrabold.text-gray-800.mb-4 Forgot your password?
+    = form_with(model: resource, as: resource_name, url: user_password_path, local: true) do |f|
+      = render 'devise/shared/error_messages', resource: resource
+      .mb-4
+        = f.label :email, "Email", class: "form-label"
+        = f.email_field :email, autofocus: true, class: "form-input"
+      .mb-6
+        = f.submit "Send Reset Instructions", class: "form-button"
+    %p.mt-4
+      = link_to 'Remembered your password?', new_user_session_path, class: 'text-blue-500 hover:text-blue-600'

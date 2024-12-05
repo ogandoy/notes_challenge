@@ -1,17 +1,16 @@
-%h2 Log in
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    %br/
-    = f.password_field :password, autocomplete: "current-password"
-  - if devise_mapping.rememberable?
-    .field
-      = f.check_box :remember_me
-      = f.label :remember_me
-  .actions
-    = f.submit "Log in"
-= render "devise/shared/links"
+%div.min-h-screen.bg-gray-100.flex.items-center.justify-center
+  %div.text-center.bg-white.shadow-lg.rounded-lg.p-8.max-w-md
+    %div.mb-6
+      = link_to image_tag("notes-logo.svg", alt: "Logo", class: "h-16 mx-auto"), root_path
+    %h1.text-3xl.font-extrabold.text-gray-800.mb-4 Sign in to QuickNotes
+    = form_with(model: resource, as: resource_name, url: session_path(resource_name), local: true) do |f|
+      .mb-4
+        = f.label :email, "Email", class: "form-label"
+        = f.email_field :email, autofocus: true, class: "form-input"
+      .mb-4
+        = f.label :password, "Password", class: "form-label"
+        = f.password_field :password, class: "form-input"
+      .mb-6
+        = f.submit "Sign in", class: "form-button"
+    %p.mt-4
+      = link_to 'Forgot your password?', new_user_password_path, class: 'text-blue-500 hover:text-blue-600'
