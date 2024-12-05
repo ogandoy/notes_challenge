@@ -1,0 +1,74 @@
+inherit_from: .rubocop_todo.yml
+
+# For cops and examples:
+# https://github.com/rubocop-hq/rubocop-rails/tree/master/lib/rubocop/cop/rails
+
+require: rubocop-rails
+
+AllCops:
+  TargetRubyVersion: 2.7.5
+  NewCops: enable
+  Exclude:
+    - 'db/**/*'
+    - 'bin/**/*'
+    - 'config/**/*'
+    - 'spec/spec_helper.rb'
+    - 'spec/rails_helper.rb'
+    - 'Rakefile'
+    - 'lib/tasks/*'
+    - 'Gemfile'
+    - 'config.ru'
+    - '**/node_modules/**/*'
+    - '**/tmp/**/*'
+    - '**/vendor/**/*'
+
+Style/Documentation:
+  Enabled: false
+
+Layout/LineLength:
+  Max: 120
+
+# Remove this if you think it is worth having Rubocop yelling at maths.
+Lint/AmbiguousOperatorPrecedence:
+  Enabled: false
+
+Metrics/BlockLength:
+  Max: 50
+  Exclude:
+    - spec/**/*
+
+Naming/MemoizedInstanceVariableName:
+  EnforcedStyleForLeadingUnderscores: required
+
+# This one is going to stay disabled since it collides with keys used by some
+# integrations we use. Variable naming is important, but it seems that some
+# integrations don't believe in that...
+Naming/VariableNumber:
+  Enabled: false
+
+Style/PercentLiteralDelimiters:
+  PreferredDelimiters:
+    default: '()'
+    '%w': '()'
+    '%i': '()'
+
+# TODO: Eventually should replace .dig('') with [''].
+Style/SingleArgumentDig: # (new in 0.89)
+  Enabled: false
+
+# Not worth the effort since sometimes it is easier to read a concatenation
+Style/StringConcatenation: # (new in 0.89)
+  Enabled: false
+
+Style/EmptyMethod:
+  Enabled: false
+
+Rails/FilePath:
+  Enabled: false
+
+Rails/UnknownEnv:
+  Environments:
+    - development
+    - test
+    - staging
+    - production
