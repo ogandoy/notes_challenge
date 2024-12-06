@@ -4,13 +4,15 @@ class HomeController < ApplicationController
 
   def index; end
 
-  def dashboard; end
+  def dashboard
+    authorize! :read, :dashboard
+  end
 
   private
 
   def redirect_if_logged_in
     return unless user_signed_in?
 
-    redirect_to dashboard_path
+    redirect_to(current_user.admin? ? dashboard_path : notes_path)
   end
 end

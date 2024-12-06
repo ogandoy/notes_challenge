@@ -9,18 +9,24 @@
 #   end
 
 User.find_or_create_by!(email: 'admin@example.com') do |user|
+  user.name = 'Admin'
+  user.last_name = 'Admin'
   user.password = 'password123'
   user.password_confirmation = 'password123'
   user.role = 'admin'
 end
 
 User.find_or_create_by!(email: 'reader1@example.com') do |user|
+  user.name = 'John'
+  user.last_name = 'Doe'
   user.password = 'password123'
   user.password_confirmation = 'password123'
   user.role = 'reader'
 end
 
 User.find_or_create_by!(email: 'reader2@example.com') do |user|
+  user.name = 'Kaci'
+  user.last_name = 'Doe'
   user.password = 'password123'
   user.password_confirmation = 'password123'
   user.role = 'reader'

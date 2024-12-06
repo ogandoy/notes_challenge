@@ -1,9 +1,9 @@
-!!!
+!!! 5
 %html
   %head
-    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %title NotesChallenge
-    %meta{:content => "width=device-width,initial-scale=1", :name => "viewport"}/
+    %meta{content: "width=device-width, initial-scale=1", :name => "viewport"}/
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag "application", "data-turbo-track": "reload"
@@ -11,6 +11,14 @@
     = javascript_importmap_tags
   %body
     - if user_signed_in?
-      = render 'layouts/navbar'
-    = render 'shared/flash_messages'
-    = yield
+      .flex
+        .w-64.text-white.p-4.fixed.left-0.top-0.h-screen
+          = render 'layouts/navbar'
+        .ml-64.flex-1.p-4
+          = render 'shared/flash_messages'
+          = yield
+    - else
+      .flex
+        .w-full
+          = render 'shared/flash_messages'
+          = yield

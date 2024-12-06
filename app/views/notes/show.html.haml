@@ -1,0 +1,10 @@
+%div.min-h-screen.p-6
+  %div.max-w-3xl.mt-10.bg-white.shadow-lg.rounded-lg.p-6
+    #note_show
+      %h1.text-3xl.font-bold.text-gray-800.mb-4= @note.title
+      %p.text-gray-700.leading-relaxed.mb-6= simple_format(@note.text)
+
+      -if can? :manage, :all
+        .buttons.flex.justify-between.mt-4
+          = button_to "Delete", note_path(@note), method: :delete, data: { confirm: "Are you sure?" }, class: "bg-red-500 hover:bg-red-700 text-white font-semibold py-2 px-10 rounded-lg shadow-md", id: "delete-button-#{@note.id}"
+          = link_to "Edit", edit_note_path(@note), class: "bg-gray-500 hover:bg-gray-700 text-white font-semibold  py-2 px-10 rounded-lg shadow-md"

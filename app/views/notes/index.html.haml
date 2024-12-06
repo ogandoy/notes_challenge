@@ -1,0 +1,30 @@
+.div.min-h-screen.p-6
+  %div.max-w-6xl.mt-10
+    %h2.text-2xl.font-semibold.mb-4 Notes
+
+    - if @notes.blank?
+      %p.text-gray-500 No notes available.
+    - else
+      .overflow-x-auto
+        %table.min-w-full.table-auto.border-collapse.border.border-gray-300
+          %thead.bg-gray-100
+            %tr
+              %th.px-4.py-2.border.border-gray-300.text-left Title
+              %th.px-4.py-2.border.border-gray-300.text-left Text
+              %th.px-4.py-2.border.border-gray-300.text-left Actions
+          %tbody
+            - @notes.each do |note|
+              %tr.border-t.border-gray-200
+                %td.px-4.py-2.border.border-gray-300= note.title
+                %td.px-4.py-2.border.border-gray-300= note.text.truncate(200)
+                %td.px-4.py-2.flex.justify-center.items-center
+                  - if can? :manage, :all
+                    = link_to note_path(note), class: "inline-block p-2 rounded-full opacity-80" do
+                      %i.fas.fa-eye.h-6.w-6
+                    = link_to edit_note_path(note), class: "inline-block p-2 rounded-full opacity-80" do
+                      %i.fas.fa-edit.h-6.w-6
+                    = button_to note_path(note), method: :delete, data: { confirm: "Are you sure?" }, class: "inline-block p-2 rounded-full opacity-80", id: "delete-button-#{note.id}" do
+                      %i.fas.fa-trash.h-6.w-6
+                  - elsif can? :read, Note
+                    = link_to note_path(note), class: "inline-block p-2 rounded-full opacity-80" do
+                      %i.fas.fa-eye.h-6.w-6s

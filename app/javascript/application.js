@@ -1,9 +1,27 @@
-// Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
 import "@hotwired/turbo-rails"
 import "controllers"
-document.addEventListener("DOMContentLoaded", () => {
+import '@fortawesome/fontawesome-free';
+
+document.addEventListener("turbo:load", () => {
+  const deleteButtons = document.querySelectorAll("[id^='delete-button-']");
+
+  deleteButtons.forEach(button => {
+    button.addEventListener('click', function(event) {
+      const confirmed = confirm("Are you sure you want to delete this note?");
+      if (!confirmed) {
+        event.preventDefault();
+      }
+    });
+  });
+
   setTimeout(() => {
     const flashMessages = document.querySelectorAll('.flash-message');
-    flashMessages.forEach(msg => msg.classList.add('hidden')); // Esconde el mensaje después de 5 segundos
-  }, 5000); // 5000ms = 5 segundos
+    flashMessages.forEach(msg => {
+      msg.classList.add('opacity-0');
+      setTimeout(() => {
+        msg.remove();
+      }, 500);
+    });
+  }, 5000);
+
 });

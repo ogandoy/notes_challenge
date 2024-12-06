@@ -29,3 +29,11 @@
 
 en:
   hello: "Hello world"
+  notices:
+    note_created: "Note was successfully created."
+    note_updated: "Note was successfully updated."
+    note_destroyed: "Note was successfully destroyed."
+  alerts:
+    note_not_found: "The note you're looking for doesn't exist or may have been removed."
+  errors:
+    access_denied: "You are not authorized to view this page."

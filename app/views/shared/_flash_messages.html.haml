@@ -1,4 +1,4 @@
 - flash.each do |type, message|
   - next unless ['notice', 'alert', 'error'].include? type.to_s
-  %div{class: "fixed bottom-4 right-4 p-4 max-w-xs rounded-lg shadow-lg #{style_for_flash(type)}"}
+  %div.flash-message{class: "fixed top-4 right-4 p-4 max-w-xs rounded-lg shadow-lg #{style_for_flash(type)} transition-opacity duration-500 opacity-100"}
     %p= message
