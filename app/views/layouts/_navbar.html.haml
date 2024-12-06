@@ -24,7 +24,7 @@
 
           %div.flex.items-center.space-x-3
             %i.fas.fa-users.text-gray-600
-            = link_to 'User Management', '#', class: "text-gray-600 hover:text-indigo-500 font-semibold"
+            = link_to 'User Management', users_path, class: "text-gray-600 hover:text-indigo-500 font-semibold"
 
       - elsif can? :read, Note
         %div.flex.items-center.space-x-3

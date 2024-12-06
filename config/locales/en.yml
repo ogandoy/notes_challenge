@@ -30,10 +30,16 @@
 en:
   hello: "Hello world"
   notices:
-    note_created: "Note was successfully created."
-    note_updated: "Note was successfully updated."
-    note_destroyed: "Note was successfully destroyed."
+    note:
+      created: "Note was successfully created."
+      updated: "Note was successfully updated."
+      destroyed: "Note was successfully destroyed."
+    user:
+      role_updated: "Role was successfully updated."
   alerts:
-    note_not_found: "The note you're looking for doesn't exist or may have been removed."
+    note:
+      not_found: "The note you're looking for doesn't exist or may have been removed."
+    user:
+      update_failed: "Failed to update the role."
   errors:
     access_denied: "You are not authorized to view this page."

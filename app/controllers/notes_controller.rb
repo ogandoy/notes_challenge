@@ -20,7 +20,7 @@ class NotesController < ApplicationController
   def create
     @note = current_user.notes.build(note_params)
     if @note.save
-      redirect_to @note, notice: I18n.t('notices.note_created')
+      redirect_to @note, notice: I18n.t('notices.note.created')
     else
       render 'new'
     end
@@ -28,7 +28,7 @@ class NotesController < ApplicationController
 
   def update
     if @note.update(note_params)
-      redirect_to @note, notice: I18n.t('notices.note_updated')
+      redirect_to @note, notice: I18n.t('notices.note.updated')
     else
       render 'edit'
     end
@@ -36,9 +36,9 @@ class NotesController < ApplicationController
 
   def destroy
     if @note.destroy
-      redirect_to notes_path, notice: I18n.t('notices.note_destroyed')
+      redirect_to notes_path, notice: I18n.t('notices.note.destroyed')
     else
-      redirect_to notes_path, alert: I18n.t('alerts.destroy_error')
+      redirect_to notes_path, alert: I18n.t('alerts.note.destroy_error')
     end
   end
 
@@ -51,7 +51,7 @@ class NotesController < ApplicationController
               Note.find_by(id: params[:id])
             end
 
-    redirect_to notes_path, alert: I18n.t('alerts.note_not_found') unless @note
+    redirect_to notes_path, alert: I18n.t('alerts.note.not_found') unless @note
   end
 
   def note_params
