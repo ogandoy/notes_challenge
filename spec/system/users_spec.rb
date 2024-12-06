@@ -5,7 +5,7 @@ RSpec.describe 'User Management', type: :system do
   let!(:reader) { create(:user) }
   let!(:reader2) { create(:user) }
   let!(:note) { create(:note, user: admin) }
-  let!(:other_note) { create(:note, user: reader) }
+  let!(:other_note) { create(:note, user: admin) }
 
   before do |scenario|
     login_as(send(scenario.metadata[:login_as])) if scenario.metadata[:login_as]

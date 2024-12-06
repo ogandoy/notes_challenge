@@ -1,26 +1,26 @@
 %div.min-h-screen.p-6
-  %div.max-w-7xl.mx-auto
+  %div.max-w-6xl.ml-8
     %div.grid.grid-cols-1.md:grid-cols-2.lg:grid-cols-3.gap-6.mt-20
       %div.bg-white.shadow-xl.rounded-lg.p-6
-        %h3.text-lg.font-semibold.text-gray-800 Total Users
-        %p.text-3xl.font-bold.text-indigo-600 120
+        %h3.text-lg.font-semibold.text-gray-800.pb-2  Total users
+        %p.text-3xl.font-bold.text-indigo-600= @total_users
 
       %div.bg-white.shadow-xl.rounded-lg.p-6
-        %h3.text-lg.font-semibold.text-gray-800 Total Notes
-        %p.text-3xl.font-bold.text-indigo-600 350
+        %h3.text-lg.font-semibold.text-gray-800.pb-2 Total notes
+        %p.text-3xl.font-bold.text-indigo-600= @total_notes
 
       %div.bg-white.shadow-xl.rounded-lg.p-6
-        %h3.text-lg.font-semibold.text-gray-800 Average Notes per User
-        %p.text-3xl.font-bold.text-indigo-600 2.9
+        %h3.text-lg.font-semibold.text-gray-800.pb-2  Average notes per user
+        %p.text-3xl.font-bold.text-indigo-600= @average_notes_per_user
 
       %div.bg-white.shadow-xl.rounded-lg.p-6
-        %h3.text-lg.font-semibold.text-gray-800 Average Words per Note
-        %p.text-3xl.font-bold.text-indigo-600 150
+        %h3.text-lg.font-semibold.text-gray-800.pb-2  Average words per note
+        %p.text-3xl.font-bold.text-indigo-600= @average_words_per_note
 
       %div.bg-white.shadow-xl.rounded-lg.p-6
-        %h3.text-lg.font-semibold.text-gray-800 User with Most Notes
-        %p.text-3xl.font-bold.text-indigo-600 John Doe
+        %h3.text-lg.font-semibold.text-gray-800.pb-2  User with Most Notes
+        %p.text-3xl.font-bold.text-indigo-600=@user_with_most_notes
 
       %div.bg-white.shadow-xl.rounded-lg.p-6
-        %h3.text-lg.font-semibold.text-gray-800 User with Longest Note
-        %p.text-3xl.font-bold.text-indigo-600 Jane Smith
+        %h3.text-lg.font-semibold.text-gray-800.pb-2  User with Longest Note
+        %p.text-3xl.font-bold.text-indigo-600=@user_with_longest_note

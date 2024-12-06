@@ -31,3 +31,15 @@ User.find_or_create_by!(email: 'reader2@example.com') do |user|
   user.password_confirmation = 'password123'
   user.role = 'reader'
 end
+
+admin_user = User.find_by(email: 'admin@example.com')
+
+if admin_user
+  10.times do |i|
+    Note.find_or_create_by!(
+      title: "Note #{i + 1}",
+      text: "This is the content of note #{i + 1}.",
+      user: admin_user
+    )
+  end
+end
