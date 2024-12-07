@@ -21,7 +21,7 @@ class HomeController < ApplicationController
 
   def set_average_metrics
     @average_notes_per_user = User.average_notes_per_user(@total_users).round(2)
-    @average_words_per_note = Note.average_word_count(@total_notes)
+    @average_words_per_note = Note.average_word_count(@total_notes).round(2)
   end
 
   def set_user_data

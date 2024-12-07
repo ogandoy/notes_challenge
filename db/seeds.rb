@@ -8,38 +8,41 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-User.find_or_create_by!(email: 'admin@example.com') do |user|
-  user.name = 'Admin'
-  user.last_name = 'Admin'
-  user.password = 'password123'
-  user.password_confirmation = 'password123'
-  user.role = 'admin'
-end
+admin_details = [
+  { email: 'admin1@example.com', name: 'Alice', last_name: 'Smith' },
+  { email: 'admin2@example.com', name: 'Bob', last_name: 'Brown' },
+  { email: 'admin3@example.com', name: 'Charlie', last_name: 'Johnson' }
+]
 
-User.find_or_create_by!(email: 'reader1@example.com') do |user|
-  user.name = 'John'
-  user.last_name = 'Doe'
-  user.password = 'password123'
-  user.password_confirmation = 'password123'
-  user.role = 'reader'
-end
-
-User.find_or_create_by!(email: 'reader2@example.com') do |user|
-  user.name = 'Kaci'
-  user.last_name = 'Doe'
-  user.password = 'password123'
-  user.password_confirmation = 'password123'
-  user.role = 'reader'
-end
-
-admin_user = User.find_by(email: 'admin@example.com')
-
-if admin_user
-  10.times do |i|
-    Note.find_or_create_by!(
-      title: "Note #{i + 1}",
-      text: "This is the content of note #{i + 1}.",
-      user: admin_user
-    )
+admins = admin_details.map do |details|
+  User.find_or_create_by!(email: details[:email]) do |user|
+    user.name = details[:name]
+    user.last_name = details[:last_name]
+    user.password = 'password123'
+    user.password_confirmation = 'password123'
+    user.role = 'admin'
   end
+end
+
+reader_details = [
+  { email: 'reader1@example.com', name: 'David', last_name: 'Williams' },
+  { email: 'reader2@example.com', name: 'Ella', last_name: 'Davis' }
+]
+
+reader_details.each do |details|
+  User.find_or_create_by!(email: details[:email]) do |user|
+    user.name = details[:name]
+    user.last_name = details[:last_name]
+    user.password = 'password123'
+    user.password_confirmation = 'password123'
+    user.role = 'reader'
+  end
+end
+
+10.times do |i|
+  Note.find_or_create_by!(
+    title: "Note #{i + 1}",
+    text: "This is the content of note #{i + 1}.",
+    user: admins.sample
+  )
 end
